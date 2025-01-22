@@ -21,10 +21,11 @@ word = Sized("WORD", 2)
 byte = Sized("BYTE", 1)
 char = Sized("char", 1)
 
+CYPHER_KEY = b"lxpyrvmgduiprervmoqkvfqrblqpvqueeuzmpqgycirxthsja"
 
 STACK_FRAME = [
     ("input", char.array(64)),
-    ("cypher_key", char.array(51)),
+    ("cypher_key", char.array(51), CYPHER_KEY),
     ("<undef>", byte.array(9)),
     ("random2", dword),
     ("random1", dword),
@@ -40,5 +41,8 @@ STACK_FRAME = [
     ("i", dword),
     ("<undef>", qword),
     ("saved_rbp", qword),
-    ("ret_addr", qword),
+    (
+        "ret_addr",
+        qword,
+    ),
 ]

@@ -1,0 +1,2 @@
+https://github.com/eignnx/picoctf/raw/2a9fab2e6d124518cc6fb828abaa2e5e51cc09d2/blast-from-the-past%20copy/original_modified.jpg
+https://raw.githubusercontent.com/eignnx/picoctf/2a9fab2e6d124518cc6fb828abaa2e5e51cc09d2/blast-from-the-past%20copy/original_modified.jpg
