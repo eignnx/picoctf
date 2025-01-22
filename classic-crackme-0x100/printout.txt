@@ -1,0 +1,244 @@
+                     *******************************************************
+                     *                           FUNCTION                  *       
+                     *******************************************************
+                     int  main (void )
+----------------------------------------------------------------------------
+int         EAX:4              <RETURN>          XREF[1]:     00401230 (W)   
+undefined8  RAX:8              len_cypher_key    XREF[2]:     00401230 (W) , 
+                                                              0040136a (W)   
+undefined4  EAX:4              tmp               XREF[1]:     0040136a (W)   
+----------------------------------------------------------------------------
+qword       Stack[0x0]:8       saved_rbp
+qword       Stack[-0x8]:8      local_8
+int         Stack[-0xc]:4      i                 XREF[2]:     00401222 (W) , 
+                                                              00401349 (R)   
+int         Stack[-0x10]:4     j
+int         Stack[-0x14]:4     len               XREF[2]:     00401235 (W) , 
+                                                              00401353 (R)   
+int         Stack[-0x18]:4     secret1           XREF[1]:     00401238 (W)   
+int         Stack[-0x1c]:4     secret2           XREF[1]:     0040123f (W)   
+int         Stack[-0x20]:4     secret3           XREF[1]:     00401246 (W)   
+char        Stack[-0x21]:1     fix               XREF[1]:     0040124d (W)   
+int         Stack[-0x28]:4     random1
+int         Stack[-0x2c]:4     random2
+byte[9]     Stack[-0x35]:9     local_35
+char[51]    Stack[-0x68]:51    cypher_key        XREF[3,7]:   00401195 (W) , 
+                                                              00401229 (*) , 
+                                                              00401359 (*) , 
+                                                              00401199 (W) , 
+                                                              00401229 (*) , 
+                                                              004011b1 (W) , 
+                                                              004011b5 (W) , 
+                                                              004011cd (W) , 
+                                                              004011d1 (W) , 
+                                                              004011d5 (W)   
+char[64]    Stack[-0xa8]:64    input             XREF[2,1]:   00401209 (*) , 
+                                                              0040135d (*) , 
+                                                              00401209 (*)   
+----------------------------------------------------------------------------
+                               main              XREF[4]:     Entry Point (*) , 
+                                                       _start:004010a4 (*) ,
+                                                              0040208c , 
+                                                              00402120 (*)   
+----------------------------------------------------------------------------
+00401176 PUSH       RBP
+00401177 MOV        RBP ,RSP
+0040117a SUB        RSP ,0xa0
+        
+00401181 MOV        RAX ,0x676d76727970786c
+        
+        
+0040118b MOV        RDX ,0x7672657270697564
+        
+        
+00401195 MOV        qword ptr [RBP  + cypher_key[0] ],RAX
+00401199 MOV        qword ptr [RBP  + cypher_key[8] ],RDX
+0040119d MOV        RAX ,0x727166766b716f6d
+        
+        
+004011a7 MOV        RDX ,0x6575717670716c62
+        
+        
+004011b1 MOV        qword ptr [RBP  + cypher_key[16] ],RAX
+004011b5 MOV        qword ptr [RBP  + cypher_key[24] ],RDX
+004011b9 MOV        RAX ,0x796771706d7a7565
+        
+        
+004011c3 MOV        RDX ,0x6a73687478726963
+        
+        
+004011cd MOV        qword ptr [RBP  + cypher_key[32] ],RAX
+004011d1 MOV        qword ptr [RBP  + cypher_key[40] ],RDX
+004011d5 MOV        dword ptr [RBP  + cypher_key[47] ],0x77616a
+        
+004011dc MOV        RAX ,qword ptr [stdout ]
+        
+004011e3 MOV        ECX ,0x0
+        
+004011e8 MOV        EDX ,0x2
+        
+004011ed MOV        ESI ,0x0
+        
+004011f2 MOV        RDI ,RAX
+004011f5 CALL       <EXTERNAL>::setvbuf                int setvbuf(FILE * __stream, cha
+        
+004011fa MOV        EDI ,s_Enter_the_secret_password:_00402008
+                           = "Enter the secret password: "
+        
+004011ff MOV        EAX ,0x0
+        
+00401204 CALL       <EXTERNAL>::printf                 int printf(char * __format, ...)
+        
+00401209 LEA        RAX =>input ,[RBP  + input[8] ]
+        
+00401210 MOV        RSI ,RAX
+00401213 MOV        EDI ,s_%50s_00402024                = "%50s"
+        
+00401218 MOV        EAX ,0x0
+        
+0040121d CALL       <EXTERNAL>::__isoc99_scanf         undefined __isoc99_scanf()
+        
+00401222 MOV        dword ptr [RBP  + i],0x0
+        
+00401229 LEA        RAX =>cypher_key ,[RBP  + cypher_key[8] ]
+0040122d MOV        RDI ,RAX
+00401230 CALL       <EXTERNAL>::strlen                 size_t strlen(char * __s)
+        
+00401235 MOV        dword ptr [RBP  + len ],len_cypher_key
+00401238 MOV        dword ptr [RBP  + secret1 ],85
+        
+0040123f MOV        dword ptr [RBP  + secret2 ],51
+        
+00401246 MOV        dword ptr [RBP  + secret3 ],15
+        
+0040124d MOV        byte ptr [RBP  + fix ],'a'
+00401251 JMP        outer_loop_cond
+        
+         outer_loop_top                                  XREF[1]:     main:0040134d (j)   
+00401256 MOV        dword ptr [RBP  + -0x8 ],0x0
+        
+0040125d JMP        inner_loop_cond
+        
+         inner_loop_top                                  XREF[1]:     0040133f (j)   
+00401262 MOV        EAX ,dword ptr [RBP  + -0x8 ]
+00401265 MOVSXD     RDX ,EAX
+00401268 IMUL       RDX ,RDX ,0x80808081
+        
+0040126f SHR        RDX ,0x20
+00401273 ADD        EDX ,EAX
+00401275 SAR        EDX ,0x7
+00401278 MOV        ECX ,EAX
+0040127a SAR        ECX ,0x1f
+0040127d SUB        EDX ,ECX
+0040127f MOV        ECX ,EDX
+00401281 SHL        ECX ,0x8
+00401284 SUB        ECX ,EDX
+00401286 SUB        EAX ,ECX
+00401288 MOV        EDX ,EAX
+0040128a MOV        ESI ,EDX
+0040128c AND        ESI ,dword ptr [RBP  + -0x10 ]
+0040128f MOV        EAX ,dword ptr [RBP  + -0x8 ]
+00401292 MOVSXD     RDX ,EAX
+00401295 IMUL       RDX ,RDX ,0x80808081
+        
+0040129c SHR        RDX ,0x20
+004012a0 ADD        EDX ,EAX
+004012a2 SAR        EDX ,0x7
+004012a5 MOV        ECX ,EAX
+004012a7 SAR        ECX ,0x1f
+004012aa SUB        EDX ,ECX
+004012ac MOV        ECX ,EDX
+004012ae SHL        ECX ,0x8
+004012b1 SUB        ECX ,EDX
+004012b3 SUB        EAX ,ECX
+004012b5 MOV        EDX ,EAX
+004012b7 MOV        EAX ,EDX
+004012b9 SAR        EAX ,0x1
+004012bb AND        EAX ,dword ptr [RBP  + -0x10 ]
+004012be ADD        EAX ,ESI
+004012c0 MOV        dword ptr [RBP  + -0x20 ],EAX
+004012c3 MOV        EAX ,dword ptr [RBP  + -0x14 ]
+004012c6 AND        EAX ,dword ptr [RBP  + -0x20 ]
+004012c9 MOV        EDX ,EAX
+004012cb MOV        EAX ,dword ptr [RBP  + -0x20 ]
+004012ce SAR        EAX ,0x2
+004012d1 AND        EAX ,dword ptr [RBP  + -0x14 ]
+004012d4 ADD        EAX ,EDX
+004012d6 MOV        dword ptr [RBP  + -0x24 ],EAX
+004012d9 MOV        EAX ,dword ptr [RBP  + -0x8 ]
+004012dc CDQE
+004012de MOVZX      EAX ,byte ptr [RBP  + RAX *0x1  + -0xa0 ]
+        
+        
+004012e6 MOVSX      EDX ,AL
+004012e9 MOVSX      EAX ,byte ptr [RBP  + -0x19 ]
+004012ed SUB        EDX ,EAX
+004012ef MOV        EAX ,dword ptr [RBP  + -0x18 ]
+004012f2 AND        EAX ,dword ptr [RBP  + -0x24 ]
+004012f5 ADD        EDX ,EAX
+004012f7 MOV        EAX ,dword ptr [RBP  + -0x24 ]
+004012fa SAR        EAX ,0x4
+004012fd AND        EAX ,dword ptr [RBP  + -0x18 ]
+00401300 ADD        EAX ,EDX
+00401302 MOVSXD     RDX ,EAX
+00401305 IMUL       RDX ,RDX ,0x4ec4ec4f
+        
+0040130c SHR        RDX ,0x20
+00401310 SAR        EDX ,0x3
+00401313 MOV        ECX ,EAX
+00401315 SAR        ECX ,0x1f
+00401318 SUB        EDX ,ECX
+0040131a IMUL       ECX ,EDX ,0x1a
+0040131d SUB        EAX ,ECX
+0040131f MOV        EDX ,EAX
+00401321 MOVZX      EAX ,byte ptr [RBP  + -0x19 ]
+00401325 ADD        EAX ,EDX
+00401327 MOV        EDX ,EAX
+00401329 MOV        EAX ,dword ptr [RBP  + -0x8 ]
+0040132c CDQE
+0040132e MOV        byte ptr [RBP  + RAX *0x1  + -0xa0 ],DL
+        
+00401335 ADD        dword ptr [RBP  + -0x8 ],0x1
+         inner_loop_cond                                 XREF[1]:     0040125d (j)   
+00401339 MOV        EAX ,dword ptr [RBP  + -0x8 ]
+0040133c CMP        EAX ,dword ptr [RBP  + -0xc ]
+0040133f JL         inner_loop_top
+        
+00401345 ADD        dword ptr [RBP  + -0x4 ],0x1
+         outer_loop_cond                                 XREF[1]:     00401251 (j)   
+00401349 CMP        dword ptr [RBP  + i],0x2
+0040134d JLE        outer_loop_top
+        
+00401353 MOV        len_cypher_key ,dword ptr [RBP  + len ]
+00401356 MOVSXD     RDX ,len_cypher_key
+00401359 LEA        RCX =>cypher_key ,[RBP  + -96 ]
+0040135d LEA        len_cypher_key =>input ,[RBP  + -160 ]
+        
+00401364 MOV        RSI ,RCX
+00401367 MOV        RDI ,len_cypher_key
+0040136a CALL       <EXTERNAL>::memcmp        int memcmp(void * __s1, void * _
+        
+0040136f TEST       tmp ,tmp
+00401371 JNZ        LAB_fail
+00401373 MOV        ESI ,s_picoCTF{sample_flag}_00402029     
+                        = "picoCTF{sample_flag}"
+        
+00401378 MOV        EDI ,s_SUCCESS!_Here_is_your_flag:_%s_00402040  
+                        = "SUCCESS! Here is your flag: %
+        
+0040137d MOV        tmp ,0x0
+        
+00401382 CALL       <EXTERNAL>::printf       int printf(char * __format, ...)
+        
+00401387 JMP        LAB_00401393
+         LAB_fail                            XREF[1]:     00401371 (j)   
+00401389 MOV        EDI ,s_FAILED!_00402060              = "FAILED!"
+        
+0040138e CALL       <EXTERNAL>::puts         int puts(char * __s)
+        
+         assume RAX = 0x0
+         LAB_00401393                        XREF[1]:     00401387 (j)   
+00401393 MOV        tmp ,0x0
+        
+00401398 LEAVE
+00401399 RET
